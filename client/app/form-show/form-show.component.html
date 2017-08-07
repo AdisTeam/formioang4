@@ -1,0 +1,40 @@
+<div class= "rows">
+  <div class="container-fluid">
+    <H3>View Component</H3>
+    <p>
+      DATA:
+    {{this.id}}
+    </p>
+    <div class=' col-md-12'>
+      <h4>JSON PROCRESSED DATA - TEMP FIX</h4>
+
+      <!-- <div *dynamicComponent="this.code" ><div *ngFor="let item of EntForm">{{item}}</div></div>
+            <br>{{this.text0}}
+            <button class="btn btn-primary" ng-click="insertdata()">Record Answers! </button>
+           </div><br> -->
+
+      <form class='col-md-6 col-md-offset-3 form-group' >
+        <div  *ngFor=" let item of this.widgetData">
+          <app-widget [index]="x" class=' list-group-item' [widget]="item">
+            Loading...
+          </app-widget>
+        </div>
+         <br>
+         <button (click)='this.formSubmit()' class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+    <br><br>
+    <label> Show html: </label><input type='checkbox' [(ngModel)]="show" value=false />
+    <div *ngIf="show">
+    <h3>evalutaions</h3>
+            <p>CODE: <br>
+          {{this.code}}
+        </p>
+  </div>
+  </div>
+</div>
+<!--
+  Component used to diplay code: ng-dynamic
+  link: https://www.npmjs.com/package/ng-dynamic
+ -->

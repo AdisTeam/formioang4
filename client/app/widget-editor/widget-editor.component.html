@@ -1,0 +1,19 @@
+
+
+<div *ngIf=" widget.editEnable &&( widget.type==='text' || widget.type==='number' || widget.type==='textarea' || widget.type==='email') " >
+<label> Edit Label</label>
+<input [(ngModel)]="widget.label" type="text" class="form-control">
+<label> Edit placeHolder</label>
+<input [(ngModel)]="widget.placeholder" type="text" class="form-control">
+</div><!-- End Of Text/email/textarea-->
+
+<div *ngIf=" widget.editEnable && (widget.type==='checkbox'||widget.type==='radio')">
+<label> Edit Question</label>
+<input [(ngModel)]="widget.label" type="text" class="form-control">
+<label> Edit values:</label> <a (click)="append()" class="text-primary" > Add value </a>
+<div *ngFor="let item of widget.label2; let i = index;trackBy:trackByIndex">
+<span ><input type="text" [(ngModel)]="this.widget.label2[i]"> <a class="text-danger" (click)="removeSF(i)">delete</a> </span>
+</div>
+
+</div><!-- End Of checkbox & Radio-->
+ <!-- End Of all-->

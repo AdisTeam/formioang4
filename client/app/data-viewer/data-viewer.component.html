@@ -1,0 +1,93 @@
+<div class="container">
+
+  <!-- Advanced Search Module-->
+  <div class="row">
+    <div class="col-md-10">
+      <h1>Advance Search</h1>
+    </div>
+    <div class="col-md-2 ">
+      <button class="btn btn-primary pull-right" (click)="showSelected()">Search</button>
+    </div>
+  </div>
+  <div class="row AdvanceSearch" [ngClass]="{'cssClass': expression}" *ngIf="selected">
+    <div class="col-md-12">
+
+      <div class="input-group">
+        <span class="input-group-btn" >
+          <select class="form-control" [(ngModel)]="chooseType" (ngModelChange)="doSomething(chooseType)" style="width:160px;padding:7px 3px !important;">
+            <option value="" selected="selected" disabled="true">Choose Condition</option>
+            <option value="name">Name</option>
+            <option value="companyName">Company Name</option>
+            <option value="city">City</option>
+            <option value="gender">Gender</option>
+            <option value="age">Age</option>
+          </select>
+        </span>
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="search" style="height: 38px;">
+      </div>
+
+
+      <!--binding html-->
+      <div class="row " style="margin-top:5px;" *ngFor="let getdetails of queryData; let i = index" [attr.data-index]="i" style="margin-top:5px;">
+        <div class="col-md-12 container-fluid" >
+          <div class="getUI" >
+            <div *ngIf="i>0" class="col-md-2" >
+              <select [(ngModel)]="getdetails.condition" class="form-control">
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+              </select>
+            </div>
+            <div class="col-md-2" *ngIf="i==0">
+            </div>
+            <div class="col-md-3">
+              <select [(ngModel)]="getdetails.name" class="form-control">
+                <option value="name">Name</option>
+                <option value="companyName">Company Name</option>
+                <option value="city">City</option>
+                <option value="gender">Gender</option>
+                <option value="age">Age</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select [(ngModel)]="getdetails.operator" class="form-control">
+                <option value="Does not contain">Does not contain</option>
+                <option value="Is Equal To">Is Equal To</option>
+                <option value="Is Not Equal To">Is Not Equal To</option>
+                <option value="Starts with">Starts with</option>
+                <option value="Ends with">Ends with</option>
+                <option value="Similiarity">Similiarity</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <input type="text" [(ngModel)]="getdetails.value" class="form-control">
+            </div>
+
+            <div class="col-md-2">
+              <button class="btn btn-danger" (click)=delete(i)>Delete</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!--binding html end here-->
+
+      <div class="row" style="margin-top:20px;">
+        <div class="col-md-1">
+          <button class="btn btn-primary" (click)="getFinalQuery()">Get Query</button>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary" (click)="reset()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+      <!-- Table Module -->
+
+  <div>
+    <ng2-smart-table  [source]="tableData" [settings]="tabledataFunc()"></ng2-smart-table>
+  </div>
+</div>

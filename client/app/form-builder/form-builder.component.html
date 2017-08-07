@@ -1,0 +1,45 @@
+
+<div class="rows container-fluid">
+    <div class="col-sm-3">
+        <div class="panel panel-warning">
+            <div class="panel-heading">Input options</div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <li *ngFor="let item of sourceList" class="list-group-item"  dnd-draggable [dragEnabled]="true" [dragData]="item" [dropZones]="['source-dropZone']">
+                  <label><a (click)="addusingClick(item)">{{item}}</a></label>
+                  <i class="fa fa-bars" aria-hidden="true" style="float:right;"></i>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">Target List</div>
+            <div class="panel-body"  dnd-droppable  (onDropSuccess)="addTo($event)" [dropZones]="['source-dropZone']">
+              <div dnd-sortable-container  style="padding:5px"  [sortableData]="targetList">
+              <ul class="list-group">
+                    <li *ngFor="let target of targetList; let x = index" class="list-group-item" dnd-sortable [dragEnabled]="true" [sortableIndex]="x">
+                      <form>  <app-widget [index]="x" [widget]="target"></app-widget>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <button  (click)=" this.code= convert()">Log()</button>
+
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">Edit</div>
+            <div class="panel-body"  >
+              <div class="list-group">
+                    <div *ngFor="let target of targetList; let x = index"  >
+                      <form > <app-widget-editor [widget]="target"></app-widget-editor></form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

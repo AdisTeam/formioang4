@@ -1,0 +1,32 @@
+<div class='container-fluid form-group'>
+  <span class= " form-inline " *ngIf="widget.submitted">
+    <label>{{widget.label}} :</label>
+    <input *ngIf='widget.type==="text"' [(ngModel)]="widget.data" type="text" class="form-control" placeholder="{{widget.placeholder}}">
+    <input *ngIf='widget.type==="email"' [(ngModel)]="widget.data" type="email" class="form-control" placeholder="{{widget.placeholder}}">
+    <input *ngIf='widget.type==="number"' [(ngModel)]="widget.data" class="form-control" type="number"style="width: 150px" placeholder="{{widget.placeholder}}">
+    <input *ngIf='widget.type==="date"' [(ngModel)]="widget.data" type="date">
+    <div *ngIf="widget.showEdit" style="float:right;">
+      Required: <input [(ngModel)]="widget.required" type="checkbox">
+      <a  (click)="toggle()" class="text-primary"> Edit </a>
+      <a class="text-danger" (click)="delete()">Remove</a>
+    </div>
+  </span>
+  <textarea *ngIf='widget.type==="textarea"' [(ngModel)]="widget.data" type="number" class="form-control" rows="4" placeholder="{{widget.placeholder}}"> </textarea> <label *ngIf="widget.required" class="text-danger">   * </label>
+  <!-- Checkbox & Radio Below -->
+
+  <div *ngIf='widget.type==="checkbox"  '>
+    <div *ngFor="let item of widget.label2; let x = index">
+      <span><label>{{widget.label2[x]}} </label>
+         <input type="checkbox" name="widget.name+'_'+x" [(ngModel)]='widget.data2[x]'> </span><br></div>
+  </div>
+
+  <div *ngIf=' widget.type==="radio" '>
+    <div *ngFor="let item of widget.label2; let x = index">
+      <span><label>{{widget.label2[x]}} </label>
+        <input type="radio" name="widget.name" [(ngModel)]="widget.data" value="{{widget.label2[x]}}">
+      </span><br>
+    </div>
+  </div><!-- End of Checkbox & radio -->
+
+
+</div>
