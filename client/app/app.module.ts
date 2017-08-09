@@ -20,7 +20,7 @@ import {DndModule} from 'ng2-dnd';
 //import {DynamicComponentModule} from 'angular2-dynamic-component/index';
 import {DynamicHTMLModule,DynamicComponentModule} from 'ng-dynamic';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-
+import * as Fuse from 'fuse.js'
 // Declare Services
 import { CatService } from './services/cat.service';
 import { UserService } from './services/user.service';

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Widget } from './widget';
-//import {FormBuilderComponent} from '../form-builder/form-builder.component';
+import {FormBuilderComponent} from '../form-builder/form-builder.component';
 
 //services imports
 
@@ -10,17 +10,26 @@ import { Widget } from './widget';
   selector: 'app-widget',
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.css'],
-  //providers: [FormShowService]
+//  providers: [FormBuilderComponent]
 })
 export class WidgetComponent implements OnInit {
 
   //public submitted:boolean = false;
   @Input() widget: Widget;
   @Input() index: number;
+  // @Output() onkeyup = new EventEmitter<boolean>();
+  // @Output() fielddelete = new EventEmitter<boolean>();
 
+  // eventHandler(value: any) {
+  //   this.onkeyup.emit(value);
+  // }
+  //
+  // delete (id :any) {
+  //   this.fielddelete.emit(id);
+  // }
 
   constructor(
-  //  private formBuilderComponent: FormBuilderComponent
+    private formBuilderComponent: FormBuilderComponent
   ){
   }
 
@@ -32,11 +41,15 @@ export class WidgetComponent implements OnInit {
   }
 
 delete() {
-//  this.formBuilderComponent.delete(this.index)
-// console.log(widget);
- //this.formBuilderComponent.targetList.splice(this.index,1);
+ //this.formBuilderComponent.delete(this.index)
+ //console.log(widget);
+ this.formBuilderComponent.targetList.splice(this.index,1);
  //console.log(this.formBuilderComponent.targetList);
 }
+
+
+
+
 
 //
 // toggle(){

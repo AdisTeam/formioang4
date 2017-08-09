@@ -38,6 +38,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "font-awesome": "^4.7.0",
+    "fuse.js": "^3.0.5",
     "generate-schema": "^2.5.1",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^7.4.1",

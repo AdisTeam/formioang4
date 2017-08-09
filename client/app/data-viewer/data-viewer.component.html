@@ -6,7 +6,7 @@
       <h1>Advance Search</h1>
     </div>
     <div class="col-md-2 ">
-      <button class="btn btn-primary pull-right" (click)="showSelected()">Search</button>
+      <button class="btn btn-primary pull-right" (click)="showSelected()">Toggle Advanced Search</button>
     </div>
   </div>
   <div class="row AdvanceSearch" [ngClass]="{'cssClass': expression}" *ngIf="selected">
@@ -16,11 +16,12 @@
         <span class="input-group-btn" >
           <select class="form-control" [(ngModel)]="chooseType" (ngModelChange)="doSomething(chooseType)" style="width:160px;padding:7px 3px !important;">
             <option value="" selected="selected" disabled="true">Choose Condition</option>
-            <option value="name">Name</option>
+             <option *ngFor="let item of this.qval"value="name">Name</option>
             <option value="companyName">Company Name</option>
             <option value="city">City</option>
             <option value="gender">Gender</option>
             <option value="age">Age</option>
+
           </select>
         </span>
         <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="search" style="height: 38px;">
@@ -41,7 +42,9 @@
             </div>
             <div class="col-md-3">
               <select [(ngModel)]="getdetails.name" class="form-control">
-                <option value="name">Name</option>
+
+                <option *ngFor="let item of this.qval" value=item> item</option>
+                 <option value="name">Name</option>
                 <option value="companyName">Company Name</option>
                 <option value="city">City</option>
                 <option value="gender">Gender</option>

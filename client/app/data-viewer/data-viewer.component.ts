@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import { Widget } from '../widget/widget';
 import {WidgetComponent} from '../widget/widget.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import * as Fuse from 'fuse.js'
 
 
 //services imports
@@ -30,6 +31,8 @@ export class DataViewerComponent implements OnInit {
   private id;
   private ngarr;
   private qval;
+  private fuseComp: Fuse;
+  private fuseOpts: any;
 
   private settings = {
       columns: {
@@ -44,8 +47,7 @@ export class DataViewerComponent implements OnInit {
         name: "Leanne Graham",
         username: "Bret",
         email: "Sincere@april.biz"
-      },
-      // ... other rows here
+      },  // ... other rows here
       {
         id: 11,
         name: "Nicholas DuBuque",
@@ -64,9 +66,21 @@ export class DataViewerComponent implements OnInit {
     this.id=this.route.params['value'].id
     this.fetchData();
     console.log('TABLEDATA');
-//    console.log(this.tableData);
+    this.fuseOpts = {
+  shouldSort: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 32,
+  minMatchCharLength: 1,
+  keys: [
+    "title",
+    "author.firstName"
+]
+};
+  this.fuseComp = new Fuse(this.AdvanceSearchArr, this.fuseOpts); // "list" is the item array
 
-  }
+}
 
 
   fetchData() {

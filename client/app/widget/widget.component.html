@@ -1,15 +1,20 @@
-<div class='container-fluid form-group'>
+<div class='form-group'>
   <span class= " form-inline " *ngIf="widget.submitted">
+    <!-- HERE  -->
     <label>{{widget.label}} :</label>
-    <input *ngIf='widget.type==="text"' [(ngModel)]="widget.data" type="text" class="form-control" placeholder="{{widget.placeholder}}">
-    <input *ngIf='widget.type==="email"' [(ngModel)]="widget.data" type="email" class="form-control" placeholder="{{widget.placeholder}}">
-    <input *ngIf='widget.type==="number"' [(ngModel)]="widget.data" class="form-control" type="number"style="width: 150px" placeholder="{{widget.placeholder}}">
-    <input *ngIf='widget.type==="date"' [(ngModel)]="widget.data" type="date">
+    <input *ngIf='widget.type==="text"' [(ngModel)]="widget.data" type="text" class="form-control" placeholder="{{widget.placeholder}}" required>
+    <input *ngIf='widget.type==="email"' [(ngModel)]="widget.data" type="email" class="form-control" placeholder="{{widget.placeholder}}" required>
+    <input *ngIf='widget.type==="number"' [(ngModel)]="widget.data" class="form-control" type="number"style="width: 150px" placeholder="{{widget.placeholder}}" required>
+    <input *ngIf='widget.type==="date"' [(ngModel)]="widget.data" class="form-control" type="date">
+
+
     <div *ngIf="widget.showEdit" style="float:right;">
       Required: <input [(ngModel)]="widget.required" type="checkbox">
       <a  (click)="toggle()" class="text-primary"> Edit </a>
       <a class="text-danger" (click)="delete()">Remove</a>
     </div>
+
+
   </span>
   <textarea *ngIf='widget.type==="textarea"' [(ngModel)]="widget.data" type="number" class="form-control" rows="4" placeholder="{{widget.placeholder}}"> </textarea> <label *ngIf="widget.required" class="text-danger">   * </label>
   <!-- Checkbox & Radio Below -->

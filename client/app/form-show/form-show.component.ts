@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 //other imports
 import { Widget } from '../widget/widget';
 import {WidgetComponent} from '../widget/widget.component';
-
+import {FormBuilderComponent} from '../form-builder/form-builder.component';
 
 //services imports
 import {FormShowService} from '../form-show/form-show.service';
@@ -23,7 +23,7 @@ import {FormShowService} from '../form-show/form-show.service';
   selector: 'app-form-show',
   templateUrl: './form-show.component.html',
   styleUrls: ['./form-show.component.css'],
-  providers: [FormShowService]
+  providers: [FormShowService, FormBuilderComponent]
 
 })
 export class FormShowComponent implements OnInit {
@@ -100,7 +100,7 @@ cleanWidgets( widReq: string[]):Widget[] {
 
 formSubmit() {
   let dataSub =[];
-
+//
  for(let i of this.widgetData){
    if (i.type==='checkbox') {
      for(let j of i.data2)

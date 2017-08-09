@@ -187,7 +187,7 @@ const  mod =  mongoose.model('mod', schemagen);
     router.route('/fetch').post(
       (req, res) => {
           let id = req.body.id;
-          MongoClient.connect('mongodb://mongodb://127.0.0.1:27017/test', function(err: mongodb.MongoError, db: mongodb.Db) {
+          MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err: mongodb.MongoError, db: mongodb.Db) {
             if (err) throw err;
             id = 'tbl'+id;
             var collection = db.collection(id);
